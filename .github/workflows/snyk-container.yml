@@ -35,6 +35,9 @@ jobs:
           image: qr-generator
           args: --file=Dockerfile --sarif-file-output=snyk.sarif
 
+      - name: "Check for Snyk vulnerabilities"
+        run: cat snyk.sarif
+
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
